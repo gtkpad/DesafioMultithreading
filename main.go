@@ -30,7 +30,7 @@ type ApiCepResponse struct {
 	Address  string `json:"address"`
 }
 
-func requestViaCep(ch chan ViaCepResponse, cep string) {
+func requestViaCep(ch chan<- ViaCepResponse, cep string) {
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", "https://viacep.com.br/ws/"+cep+"/json/", nil)
 	resp, _ := client.Do(req)
@@ -56,7 +56,7 @@ func requestViaCep(ch chan ViaCepResponse, cep string) {
 	ch <- response
 }
 
-func requestApiCep(ch chan ApiCepResponse, cep string) {
+func requestApiCep(ch chan<- ApiCepResponse, cep string) {
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", "https://cdn.apicep.com/file/apicep/"+cep+".json", nil)
 	resp, _ := client.Do(req)
