@@ -41,6 +41,7 @@ func requestViaCep(ch chan ViaCepResponse, cep string) {
 
 	if err != nil {
 		close(ch)
+		return
 	}
 
 	var response ViaCepResponse
@@ -49,6 +50,7 @@ func requestViaCep(ch chan ViaCepResponse, cep string) {
 
 	if err != nil {
 		close(ch)
+		return
 	}
 
 	ch <- response
@@ -65,6 +67,7 @@ func requestApiCep(ch chan ApiCepResponse, cep string) {
 
 	if err != nil {
 		close(ch)
+		return
 	}
 
 	var response ApiCepResponse
@@ -73,6 +76,7 @@ func requestApiCep(ch chan ApiCepResponse, cep string) {
 
 	if err != nil {
 		close(ch)
+		return
 	}
 
 	ch <- response
